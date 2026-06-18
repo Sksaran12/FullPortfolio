@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Saran Mandal - Full-Stack Web Developer & Computer Science Graduate Portfolio. Specializing in MERN Stack, Python, and Java.">
+  <title>Saran Mandal | Full-Stack Web Developer</title>
+  
+  <!-- Google Fonts: Poppins (Clean, geometric, premium tech font) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Animate.css for entrance animations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+            display: ['Poppins', 'sans-serif'],
+          },
+          animation: {
+            'slide-left': 'slideLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            'slide-right': 'slideRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            'fade-in': 'fadeIn 0.8s ease-out forwards',
+          },
+          keyframes: {
+            slideLeft: {
+              '0%': { transform: 'translateX(-40px)', opacity: '0' },
+              '100%': { transform: 'translateX(0)', opacity: '1' },
+            },
+            slideRight: {
+              '0%': { transform: 'translateX(40px)', opacity: '0' },
+              '100%': { transform: 'translateX(0)', opacity: '1' },
+            },
+            fadeIn: {
+              '0%': { opacity: '0', transform: 'translateY(15px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Custom CSS for Grid Pattern, Scroll Animations & CSS Typewriter -->
+  <style>
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 5rem; /* Matches h-20 header to prevent overlap */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+    
+    /* Elegant modern scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F8FAFC;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #189078;
+    }
+
+    /* Minimalist Technical Grid Background (Light Mode) */
+    .bg-grid {
+      background-size: 50px 50px;
+      background-image: 
+        linear-gradient(to right, rgba(226, 232, 240, 0.4) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(226, 232, 240, 0.4) 1px, transparent 1px);
+    }
+
+    /* Organic Floating Background Blobs Animation */
+    @keyframes blob-float {
+      0%, 100% { transform: translate(0px, 0px) scale(1); }
+      33% { transform: translate(30px, -50px) scale(1.1); }
+      66% { transform: translate(-20px, 20px) scale(0.95); }
+    }
+    .animate-blob {
+      animation: blob-float 12s infinite alternate ease-in-out;
+    }
+    .animation-delay-2000 {
+      animation-delay: 2s;
+    }
+    .animation-delay-4000 {
+      animation-delay: 4s;
+    }
+
+    /* GPU-Accelerated Scroll-Driven Entrance Animations for Cards */
+    .animate-card {
+      opacity: 1;
+      transform: translateY(0);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease-out;
+      will-change: transform, opacity;
+    }
+
+    @supports (animation-timeline: view()) {
+      .animate-card {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: cardFadeIn linear both;
+        animation-timeline: view();
+        animation-range: entry 5% cover 25%;
+      }
+      
+      @keyframes cardFadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+
+    /* Scroll-Driven GPU-Accelerated Progress Bars */
+    .progress-fill {
+      transform-origin: left;
+      will-change: transform;
+    }
+    @supports (animation-timeline: view()) {
+      .progress-fill {
+        animation: progressGrow linear both;
+        animation-timeline: view();
+        animation-range: entry 10% cover 30%;
+      }
+      @keyframes progressGrow {
+        from { transform: scaleX(0); }
+        to { transform: scaleX(1); }
+      }
+    }
+
+    /* Bind Animate.css keyframes to Scroll view-timeline */
+    @supports (animation-timeline: view()) {
+      .scroll-animate-lightspeed {
+        animation: lightSpeedInRight linear both;
+        animation-timeline: view();
+        animation-range: entry 10% cover 35%;
+      }
+      .scroll-animate-zoomdown {
+        animation: zoomInDown linear both;
+        animation-timeline: view();
+        animation-range: entry 10% cover 35%;
+      }
+      .scroll-animate-fadeleft {
+        animation: fadeInLeft linear both;
+        animation-timeline: view();
+        animation-range: entry 10% cover 35%;
+      }
+      .scroll-animate-faderight {
+        animation: fadeInRight linear both;
+        animation-timeline: view();
+        animation-range: entry 10% cover 35%;
+      }
+      .scroll-animate-fadeup {
+        animation: fadeInUp linear both;
+        animation-timeline: view();
+        animation-range: entry 10% cover 35%;
+      }
+    }
+
+    /* Advanced Pure CSS Typewriter Animation for Multiple Roles */
+    .typewriter-text::after {
+      content: "Full Stack Developer";
+      color: #189078;
+      animation: 
+        contentChange 16s infinite,
+        typing 4s steps(24) infinite,
+        blink 0.5s step-end infinite alternate;
+      border-right: 3px solid #189078;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+      vertical-align: bottom;
+      width: 0;
+    }
+
+    @keyframes contentChange {
+      0%, 25% { content: "Full Stack Developer"; }
+      25.01%, 50% { content: "MERN Stack Developer"; }
+      50.01%, 75% { content: "Software Developer"; }
+      75.01%, 100% { content: "Web Designer"; }
+    }
+
+    @keyframes typing {
+      0%, 90%, 100% { width: 0; }
+      25%, 80% { width: 100%; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+  </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-655 min-h-screen selection:bg-[#189078] selection:text-white relative overflow-x-hidden bg-grid">
+
+  <!-- Organic Glowing Background Blobs for Visual Aesthetics -->
+  <div class="absolute top-[10vh] left-[-100px] w-96 h-96 bg-[#189078]/5 rounded-full filter blur-3xl -z-10 animate-blob pointer-events-none"></div>
+  <div class="absolute top-[80vh] right-[-100px] w-[500px] h-[500px] bg-[#189078]/5 rounded-full filter blur-3xl -z-10 animate-blob animation-delay-2000 pointer-events-none"></div>
+  <div class="absolute top-[180vh] left-[-150px] w-[400px] h-[400px] bg-[#189078]/5 rounded-full filter blur-3xl -z-10 animate-blob animation-delay-4000 pointer-events-none"></div>
+  <div class="absolute top-[280vh] right-[-100px] w-96 h-96 bg-[#189078]/5 rounded-full filter blur-3xl -z-10 animate-blob pointer-events-none"></div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="sticky top-0 w-full z-50 bg-[#F8FAFC]/90 backdrop-blur-md border-b border-slate-200 transition-all duration-300">
+    <nav class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between" aria-label="Main Navigation">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2 group" id="nav-brand">
+        <!-- Custom SVG Isometric Stack Icon representing Full-Stack layers -->
+        <svg class="w-8 h-8 text-[#189078] transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5z" fill="rgba(24, 144, 120, 0.15)"></path>
+          <path d="M2 17l10 5 10-5"></path>
+          <path d="M2 12l10 5 10-5"></path>
+        </svg>
+        <span class="text-xl font-bold tracking-tight text-slate-900 transition-colors group-hover:text-[#189078]">
+          SM<span class="text-[#189078] font-medium">Portfolio</span>
+        </span>
+      </a>
+
+      <!-- Desktop Links -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#about" class="relative text-sm font-semibold text-slate-600 hover:text-[#189078] transition-colors duration-200 group/link" id="link-about">
+          About
+          <span class="absolute bottom-[-4px] left-0 w-0 h-0.5 bg-[#189078] transition-all duration-300 group-hover/link:w-full"></span>
+        </a>
+        <a href="#education" class="relative text-sm font-semibold text-slate-600 hover:text-[#189078] transition-colors duration-200 group/link" id="link-education">
+          Education
+          <span class="absolute bottom-[-4px] left-0 w-0 h-0.5 bg-[#189078] transition-all duration-300 group-hover/link:w-full"></span>
+        </a>
+        <a href="#projects" class="relative text-sm font-semibold text-slate-600 hover:text-[#189078] transition-colors duration-200 group/link" id="link-projects">
+          Projects
+          <span class="absolute bottom-[-4px] left-0 w-0 h-0.5 bg-[#189078] transition-all duration-300 group-hover/link:w-full"></span>
+        </a>
+        <a href="#skills" class="relative text-sm font-semibold text-slate-600 hover:text-[#189078] transition-colors duration-200 group/link" id="link-skills">
+          Skills
+          <span class="absolute bottom-[-4px] left-0 w-0 h-0.5 bg-[#189078] transition-all duration-300 group-hover/link:w-full"></span>
+        </a>
+        <a href="#learning" class="relative text-sm font-semibold text-slate-600 hover:text-[#189078] transition-colors duration-200 group/link" id="link-learning">
+          Learning
+          <span class="absolute bottom-[-4px] left-0 w-0 h-0.5 bg-[#189078] transition-all duration-300 group-hover/link:w-full"></span>
+        </a>
+        <a href="#contact" class="relative text-sm font-semibold text-slate-600 hover:text-[#189078] transition-colors duration-200 group/link" id="link-contact">
+          Contact
+          <span class="absolute bottom-[-4px] left-0 w-0 h-0.5 bg-[#189078] transition-all duration-300 group-hover/link:w-full"></span>
+        </a>
+      </div>
+
+      <!-- Action Button: Get CV -->
+      <div class="hidden md:block">
+        <a href="Saran_Mandal_CV.pdf" target="_blank" class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg text-sm font-semibold bg-[#189078] hover:bg-[#189078]/90 text-white transition-all duration-300 hover:-translate-y-0.5 border border-[#189078]/20 active:translate-y-0" id="nav-cv-btn">
+          Get CV
+          <i class="fa-solid fa-file-pdf ml-1.5 text-xs"></i>
+        </a>
+      </div>
+
+      <!-- Mobile Checkbox Toggle -->
+      <div class="md:hidden flex items-center">
+        <label for="menu-toggle" class="cursor-pointer p-2 text-slate-600 hover:text-[#189078] transition-colors focus:outline-none" aria-label="Toggle Menu">
+          <i class="fa-solid fa-bars text-xl"></i>
+        </label>
+        <input type="checkbox" id="menu-toggle" class="hidden peer" />
+        
+        <!-- Mobile Dropdown Menu -->
+        <div class="absolute top-20 left-0 w-full bg-white border-b border-slate-200 flex-col py-6 px-6 gap-4 hidden peer-checked:flex transition-all duration-300 ease-in-out shadow-lg">
+          <a href="#about" class="text-base font-semibold text-slate-600 hover:text-[#189078] py-2" onclick="document.getElementById('menu-toggle').checked = false;">About</a>
+          <a href="#education" class="text-base font-semibold text-slate-600 hover:text-[#189078] py-2" onclick="document.getElementById('menu-toggle').checked = false;">Education</a>
+          <a href="#projects" class="text-base font-semibold text-slate-600 hover:text-[#189078] py-2" onclick="document.getElementById('menu-toggle').checked = false;">Projects</a>
+          <a href="#skills" class="text-base font-semibold text-slate-600 hover:text-[#189078] py-2" onclick="document.getElementById('menu-toggle').checked = false;">Skills</a>
+          <a href="#learning" class="text-base font-semibold text-slate-600 hover:text-[#189078] py-2" onclick="document.getElementById('menu-toggle').checked = false;">Learning</a>
+          <a href="#contact" class="text-base font-semibold text-slate-600 hover:text-[#189078] py-2" onclick="document.getElementById('menu-toggle').checked = false;">Contact</a>
+          <a href="Saran_Mandal_CV.pdf" target="_blank" class="inline-flex items-center justify-center mt-2 px-5 py-3 rounded-lg text-sm font-semibold bg-[#189078] text-white text-center" onclick="document.getElementById('menu-toggle').checked = false;">Get CV</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="relative z-10 max-w-6xl mx-auto px-6">
+    
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-[calc(100vh-5rem)] flex flex-col md:flex-row items-center justify-between py-12 md:py-20 gap-12" aria-labelledby="hero-title">
+      
+      <!-- Left Content Column -->
+      <div class="w-full md:w-7/12 flex flex-col items-start text-left space-y-6 animate-slide-left opacity-0">
+        <h3 class="text-lg sm:text-xl font-bold text-slate-600 tracking-wide">Hello It's Me</h3>
+        
+        <div class="space-y-3">
+          <h1 id="hero-title" class="font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-wide uppercase leading-tight text-slate-900 animate__animated animate__lightSpeedInRight">
+            I'm Saran Mandal
+          </h1>
+          
+          <!-- Dynamic Typewriter Subtitle matching the reference style -->
+          <div class="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-800 flex items-center gap-1.5 flex-wrap">
+            <span>Welcome to </span>
+            <span class="typewriter-text"></span>
+          </div>
+        </div>
+
+        <p class="text-sm sm:text-base text-slate-600 max-w-xl leading-relaxed">
+          I'm a motivated Computer Science graduate from Gauhati University with hands-on experience building full-stack web applications using the <strong>MERN Stack</strong> (MongoDB, Express.js, React, Node.js) and backend systems in <strong>Python</strong> and <strong>Java</strong>.
+        </p>
+        
+        <!-- Social Media Icons matching reference layout -->
+        <div class="flex items-center gap-4 pt-2">
+          <!-- Facebook Mock -->
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-slate-300 hover:border-[#189078] hover:bg-[#189078] hover:text-white text-slate-600 flex items-center justify-center transition-all duration-350 hover:-translate-y-1" aria-label="Facebook Profile">
+            <i class="fa-brands fa-facebook-f text-sm"></i>
+          </a>
+          <!-- Twitter Mock -->
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-slate-300 hover:border-[#189078] hover:bg-[#189078] hover:text-white text-slate-600 flex items-center justify-center transition-all duration-350 hover:-translate-y-1" aria-label="Twitter Profile">
+            <i class="fa-brands fa-twitter text-sm"></i>
+          </a>
+          <!-- Instagram Mock -->
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-slate-300 hover:border-[#189078] hover:bg-[#189078] hover:text-white text-slate-600 flex items-center justify-center transition-all duration-350 hover:-translate-y-1" aria-label="Instagram Profile">
+            <i class="fa-brands fa-instagram text-sm"></i>
+          </a>
+          <!-- LinkedIn -->
+          <a href="https://linkedin.com/in/saran-mandal-b70370304" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-slate-300 hover:border-[#189078] hover:bg-[#189078] hover:text-white text-slate-600 flex items-center justify-center transition-all duration-350 hover:-translate-y-1" aria-label="LinkedIn Profile">
+            <i class="fa-brands fa-linkedin-in text-sm"></i>
+          </a>
+        </div>
+
+        <!-- CTAs -->
+        <div class="flex flex-wrap items-center gap-4 pt-4 w-full sm:w-auto">
+          <a href="#projects" class="w-full sm:w-auto text-center px-7 py-3.5 rounded-xl text-sm font-semibold bg-[#189078] hover:bg-[#189078]/90 text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0" id="hero-cta-projects">
+            View Projects
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: Glowing Circular Portrait Matching Reference -->
+      <div class="w-full md:w-5/12 flex justify-center items-center animate-slide-right opacity-0">
+        <div class="relative w-64 h-64 sm:w-80 sm:h-80 flex items-center justify-center">
+          <!-- Glowing Background Glow Ring -->
+          <div class="absolute inset-0 rounded-full bg-[#189078] opacity-10 blur-3xl animate-pulse"></div>
+          
+          <!-- Outer Circle Frame with glowing shadow -->
+          <div class="relative w-64 h-64 sm:w-76 sm:h-76 rounded-full border-4 border-[#189078] p-2 bg-white shadow-[0_0_30px_rgba(24,144,120,0.25)] transition-all duration-500 hover:shadow-[0_0_45px_rgba(24,144,120,0.4)]">
+            <!-- Inner Cropped Image -->
+            <div class="w-full h-full rounded-full overflow-hidden bg-emerald-200/10 flex items-center justify-center">
+              <img src="assets/picofme.png" alt="Saran Mandal Portrait" class="w-full h-full object-cover">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 border-t border-slate-200" aria-labelledby="about-title">
+      <!-- Section heading gets card entrance styling -->
+      <div class="max-w-3xl space-y-4 mb-12 animate-card">
+        <h2 id="about-title" class="font-bold text-2xl sm:text-3xl text-slate-900 scroll-animate-fadeleft">
+          Professional <span class="text-[#189078]">Core Summary</span>
+        </h2>
+        <p class="text-slate-655 text-sm sm:text-base leading-relaxed">
+          I design clean architectures and build functional web systems. With a strong command of modern full-stack developer workflows, I focus on performance, component reusability, and continuous learning.
+        </p>
+      </div>
+
+      <!-- Text Layout instead of card boxes -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 mt-8 text-slate-600 leading-relaxed text-sm sm:text-base">
+        <!-- Bio Column -->
+        <div class="space-y-4 animate-card">
+          <p>
+            I am a motivated computer science graduate specializing in full-stack web architectures. I work extensively with the <strong>MERN Stack</strong>, <strong>Python</strong>, and <strong>Java</strong> to develop performant APIs, responsive web interfaces, and normalized database schemes.
+          </p>
+          <p>
+            My goal is to translate complex technical requirements into clean, maintainable, and high-performance digital products, emphasizing component modularity, clean code practices, and smooth user interactions.
+          </p>
+        </div>
+
+        <!-- Highlighted Details Column (Floated style) -->
+        <div class="space-y-4 border-l border-slate-200 pl-6 sm:pl-8 animate-card">
+          <div class="group py-0.5 flex gap-3.5 items-start">
+            <div class="w-8 h-8 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center text-[#189078] flex-shrink-0 group-hover:bg-[#189078] group-hover:text-white group-hover:border-[#189078] transition-all duration-300">
+              <i class="fa-solid fa-graduation-cap text-xs"></i>
+            </div>
+            <div>
+              <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Current Focus</p>
+              <p class="text-slate-800 font-semibold mt-0.5 transition-colors">Pursuing MCA — Girirjananda Chowdhury University, Azara</p>
+            </div>
+          </div>
+          <div class="group py-0.5 flex gap-3.5 items-start">
+            <div class="w-8 h-8 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center text-[#189078] flex-shrink-0 group-hover:bg-[#189078] group-hover:text-white group-hover:border-[#189078] transition-all duration-300">
+              <i class="fa-solid fa-university text-xs"></i>
+            </div>
+            <div>
+              <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Academic Foundation</p>
+              <p class="text-slate-800 font-semibold mt-0.5 transition-colors">B.Sc. in Computer Science — Gauhati University, Guwahati</p>
+            </div>
+          </div>
+          <div class="group py-0.5 flex gap-3.5 items-start">
+            <div class="w-8 h-8 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center text-[#189078] flex-shrink-0 group-hover:bg-[#189078] group-hover:text-white group-hover:border-[#189078] transition-all duration-300">
+              <i class="fa-solid fa-laptop-code text-xs"></i>
+            </div>
+            <div>
+              <p class="text-slate-800 font-semibold mt-0.5 transition-colors">Aspiring Full-Stack Developer & Software Engineer</p>
+            </div>
+          </div>
+          <div class="group py-0.5 flex gap-3.5 items-start">
+            <div class="w-8 h-8 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center text-[#189078] flex-shrink-0 group-hover:bg-[#189078] group-hover:text-white group-hover:border-[#189078] transition-all duration-300">
+              <i class="fa-solid fa-map-location-dot text-xs"></i>
+            </div>
+            <div>
+              <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Location & Base</p>
+              <p class="text-slate-800 font-semibold mt-0.5 transition-colors">Guwahati, Assam, India</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Timeline Section -->
+    <section id="education" class="py-16 border-t border-slate-200" aria-labelledby="education-title">
+      <div class="max-w-3xl space-y-4 mb-12 animate-card">
+        <h2 id="education-title" class="font-bold text-2xl sm:text-3xl text-slate-900 scroll-animate-faderight">
+          Academic <span class="text-[#189078]">Timeline</span>
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+          My academic foundation in computer science and ongoing education.
+        </p>
+      </div>
+
+      <!-- Timeline Layout -->
+      <div class="relative border-l border-slate-200 ml-4 md:ml-6 space-y-8">
+        
+        <!-- Timeline Item 1 -->
+        <div class="relative pl-8 md:pl-10 animate-card">
+          <!-- Dot -->
+          <span class="absolute left-[-6px] top-1.5 w-3 h-3 rounded-full bg-[#189078] border-2 border-white ring-4 ring-[#189078]/10"></span>
+          <!-- Content Box -->
+          <div class="bg-white border border-slate-200 p-6 rounded-2xl hover:-translate-y-1.5 hover:border-[#189078] hover:shadow-[0_10px_25px_-5px_rgba(24,144,120,0.06)] transition-all duration-350">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-1">
+              <h3 class="font-bold text-slate-900 text-base sm:text-lg">Pursuing Master of Computer Applications (MCA)</h3>
+              <span class="text-xs font-semibold bg-[#189078]/5 text-[#189078] px-2.5 py-1 rounded border border-[#189078]/10 w-fit">2025 – 2027</span>
+            </div>
+            <p class="text-slate-700 text-sm font-semibold mb-2">Girirjananda Chowdhury University, Azara</p>
+            <p class="text-slate-500 text-xs font-display">Currently expanding knowledge on advanced systems engineering, architecture patterns, and software management processes.</p>
+          </div>
+        </div>
+
+        <!-- Timeline Item 2 -->
+        <div class="relative pl-8 md:pl-10 animate-card">
+          <span class="absolute left-[-6px] top-1.5 w-3 h-3 rounded-full bg-slate-400 border-2 border-white ring-4 ring-slate-100"></span>
+          <div class="bg-white border border-slate-200 p-6 rounded-2xl hover:-translate-y-1.5 hover:border-[#189078] hover:shadow-[0_10px_25px_-5px_rgba(24,144,120,0.06)] transition-all duration-355">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-1">
+              <h3 class="font-bold text-slate-900 text-base sm:text-lg">Bachelor of Science in Computer Science</h3>
+              <span class="text-xs font-semibold bg-slate-50 text-slate-600 px-2.5 py-1 rounded border border-slate-200 w-fit">2021 – 2024</span>
+            </div>
+            <p class="text-slate-700 text-sm font-semibold mb-2">Gauhati University, Guwahati</p>
+            <p class="text-slate-500 text-xs font-display">CGPA: 5.97 / 10 | Major: Computer Science. Built a strong core in programming paradigms, algorithms, databases, and network fundamentals.</p>
+          </div>
+        </div>
+
+        <!-- Timeline Item 3 -->
+        <div class="relative pl-8 md:pl-10 animate-card">
+          <span class="absolute left-[-6px] top-1.5 w-3 h-3 rounded-full bg-slate-400 border-2 border-white ring-4 ring-slate-100"></span>
+          <div class="bg-white border border-slate-200 p-6 rounded-2xl hover:-translate-y-1.5 hover:border-[#189078] hover:shadow-[0_10px_25px_-5px_rgba(24,144,120,0.06)] transition-all duration-355">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-1">
+              <h3 class="font-bold text-slate-900 text-base sm:text-lg">Higher Secondary Certificate (Class XII) — Science</h3>
+              <span class="text-xs font-semibold bg-slate-50 text-slate-600 px-2.5 py-1 rounded border border-slate-200 w-fit">2019 – 2021</span>
+            </div>
+            <p class="text-slate-700 text-sm font-semibold mb-2">Assam Higher Secondary Education Council</p>
+            <p class="text-slate-500 text-xs font-display">Percentage: 68.2%. Specialized in Physics, Chemistry, and Mathematics.</p>
+          </div>
+        </div>
+
+        <!-- Timeline Item 4 -->
+        <div class="relative pl-8 md:pl-10 animate-card">
+          <span class="absolute left-[-6px] top-1.5 w-3 h-3 rounded-full bg-slate-400 border-2 border-white ring-4 ring-slate-100"></span>
+          <div class="bg-white border border-slate-200 p-6 rounded-2xl hover:-translate-y-1.5 hover:border-[#189078] hover:shadow-[0_10px_25px_-5px_rgba(24,144,120,0.06)] transition-all duration-355">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-1">
+              <h3 class="font-bold text-slate-900 text-base sm:text-lg">Secondary School Certificate (Class X)</h3>
+              <span class="text-xs font-semibold bg-slate-50 text-slate-600 px-2.5 py-1 rounded border border-slate-200 w-fit">2018 – 2019</span>
+            </div>
+            <p class="text-slate-700 text-sm font-semibold mb-2">Board of Secondary Education, Assam</p>
+            <p class="text-slate-500 text-xs font-display">Percentage: 60%.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Certifications Sub-block -->
+      <div class="mt-12 bg-white border border-slate-200 rounded-2xl p-6 animate-card hover:border-[#189078] hover:shadow-[0_10px_25px_-5px_rgba(24,144,120,0.06)] transition-all duration-300" id="certifications-box">
+        <h3 class="font-bold text-lg text-slate-900 mb-4 flex items-center gap-2.5">
+          <i class="fa-solid fa-award text-[#189078] text-lg"></i>
+          Certifications & Training
+        </h3>
+        <div>
+          <h4 class="text-sm font-bold text-slate-800">Diploma in Computer Applications (DCA) & Desktop Publishing (DTP)</h4>
+          <p class="text-slate-605 text-xs font-semibold mt-0.5">Professional Computer Institute — 6 Months</p>
+          <p class="text-slate-500 text-xs mt-2 leading-relaxed">
+            Completed an accredited training curriculum detailing computer fundamentals, Microsoft Office productivity utilities, web-publishing workflows, and local IT operations.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 border-t border-slate-200" aria-labelledby="projects-title">
+      <div class="max-w-3xl space-y-4 mb-12 animate-card">
+        <h2 id="projects-title" class="font-bold text-2xl sm:text-3xl text-slate-900 scroll-animate-zoomdown">
+          Featured <span class="text-[#189078]">Projects</span>
+        </h2>
+        <p class="text-slate-655 text-sm sm:text-base leading-relaxed">
+          Concrete applications and engineering platforms built using frontend and backend technologies.
+        </p>
+      </div>
+
+      <!-- 5 Projects Layout (Grid & Row structure) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Project 1 -->
+        <article class="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:border-[#189078] hover:-translate-y-1.5 hover:shadow-[0_12px_28px_-5px_rgba(24,144,120,0.08)] transition-all duration-300 flex flex-col h-full group animate-card" id="project-card-1">
+          <div class="h-48 bg-slate-50 overflow-hidden relative border-b border-slate-200">
+            <img src="assets/project-portfolio.png" alt="Animated Developer Portfolio Dashboard" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500">
+          </div>
+          <div class="p-6 flex flex-col flex-grow justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="font-bold text-slate-900 text-base sm:text-lg">Animated Developer Portfolio</h3>
+                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">2024</span>
+              </div>
+              <p class="text-slate-500 text-xs mb-4 leading-relaxed">
+                Designed and built a fully animated personal portfolio website featuring smooth CSS keyframe animations, scroll-triggered effects, and a responsive layout optimised for all screen sizes. Implemented component-based structure.
+              </p>
+              <!-- Tech Tags -->
+              <div class="flex flex-wrap gap-1.5 mb-6">
+                <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#189078]/5 border border-[#189078]/10 text-[#189078]">HTML5 / CSS3</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#189078]/5 border border-[#189078]/10 text-[#189078]">JavaScript</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#189078]/5 border border-[#189078]/10 text-[#189078]">React</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between border-t border-slate-100 pt-4">
+              <span class="text-xs font-semibold text-slate-400">Project Demo</span>
+              <a href="https://github.com/mandalsaran123" target="_blank" class="text-xs font-bold text-[#189078] hover:text-[#189078]/85 flex items-center gap-1 transition-colors">
+                View Project
+                <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:border-[#189078] hover:-translate-y-1.5 hover:shadow-[0_12px_28px_-5px_rgba(24,144,120,0.08)] transition-all duration-300 flex flex-col h-full group animate-card" id="project-card-2">
+          <div class="h-48 bg-slate-50 overflow-hidden relative border-b border-slate-200">
+            <img src="assets/project-gallery.png" alt="Photo Gallery Interface with Sync" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500">
+          </div>
+          <div class="p-6 flex flex-col flex-grow justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="font-bold text-slate-900 text-base sm:text-lg">Photo Gallery with Sync</h3>
+                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">2024</span>
+              </div>
+              <p class="text-slate-500 text-xs mb-4 leading-relaxed">
+                Built a dynamic photo gallery with grid layout, lightbox preview, and real-time sync functionality — images stored and retrieved via a MongoDB backend, keeping the gallery updated. Implemented category filtering.
+              </p>
+              <div class="flex flex-wrap gap-1.5 mb-6">
+                <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#189078]/5 border border-[#189078]/10 text-[#189078]">HTML5 / CSS3</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#189078]/5 border border-[#189078]/10 text-[#189078]">Vanilla JS</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#189078]/5 border border-[#189078]/10 text-[#189078]">MongoDB</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between border-t border-slate-100 pt-4">
+              <span class="text-xs font-semibold text-slate-400">Project Demo</span>
+              <a href="https://github.com/mandalsaran123" target="_blank" class="text-xs font-bold text-[#189078] hover:text-[#189078]/85 flex items-center gap-1 transition-colors">
+                View Project
+                <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:border-[#189078] hover:-translate-y-1.5 hover:shadow-[0_12px_28px_-5px_rgba(24,144,120,0.08)] transition-all duration-300 flex flex-col h-full group animate-card" id="project-card-3">
+          <div class="h-48 bg-slate-50 overflow-hidden relative border-b border-slate-200">
+            <img src="assets/project-frontend.png" alt="Frontend Mini Projects Suite Mockup" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500">
+          </div>
+          <div class="p-6 flex flex-col flex-grow justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="font-bold text-slate-900 text-base sm:text-lg">Frontend Mini Projects Suite</h3>
+                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">2023 - 2024</span>
+              </div>
+              <p class="text-slate-500 text-xs mb-4 leading-relaxed">
+                A collection of responsive React projects including a fully functional To-Do List manager with useState, a real-time Digital Clock using setInterval, and a site-wide Dark Mode Toggle with localStorage persistence.
+              </p>
+              <div class="flex flex-wrap gap-1.5 mb-6">
+                <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#189078]/5 border border-[#189078]/10 text-[#189078]">React</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#189078]/5 border border-[#189078]/10 text-[#189078]">CSS Variables</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#189078]/5 border border-[#189078]/10 text-[#189078]">Web APIs</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between border-t border-slate-100 pt-4">
+              <span class="text-xs font-semibold text-slate-400">Project Demo</span>
+              <a href="https://github.com/mandalsaran123" target="_blank" class="text-xs font-bold text-[#189078] hover:text-[#189078]/85 flex items-center gap-1 transition-colors">
+                View Project
+                <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:border-[#189078] hover:-translate-y-1.5 hover:shadow-[0_12px_28px_-5px_rgba(24,144,120,0.08)] transition-all duration-300 flex flex-col h-full group animate-card" id="project-card-4">
+          <div class="h-48 bg-slate-50 overflow-hidden relative border-b border-slate-200">
+            <img src="assets/project-mern.png" alt="MERN Stack Real World Application" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500">
+          </div>
+          <div class="p-6 flex flex-col flex-grow justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="font-bold text-slate-900 text-base sm:text-lg">Full-Stack MERN App</h3>
+                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">2025 - Present</span>
+              </div>
+              <p class="text-slate-500 text-xs mb-4 leading-relaxed">
+                Developing a production-grade MERN stack application with complete user authentication, RESTful API endpoints, and a dynamic React UI connected to a MongoDB Atlas database. Focused on error handling and structure.
+              </p>
+              <div class="flex flex-wrap gap-1.5 mb-6">
+                <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#189078]/5 border border-[#189078]/10 text-[#189078]">MERN Stack</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#189078]/5 border border-[#189078]/10 text-[#189078]">REST API</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#189078]/5 border border-[#189078]/10 text-[#189078]">MongoDB Atlas</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between border-t border-slate-100 pt-4">
+              <span class="text-xs font-semibold text-[#189078]">In Progress</span>
+              <a href="https://github.com/mandalsaran123" target="_blank" class="text-xs font-bold text-[#189078] hover:text-[#189078]/85 flex items-center gap-1 transition-colors">
+                View Project
+                <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 5: Full width card for the 5th project -->
+        <article class="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:border-[#189078] hover:-translate-y-1.5 hover:shadow-[0_12px_28px_-5px_rgba(24,144,120,0.08)] transition-all duration-300 flex flex-col md:flex-row h-full md:col-span-2 group animate-card" id="project-card-5">
+          <div class="w-full md:w-2/5 bg-slate-55 overflow-hidden relative border-b md:border-b-0 md:border-r border-slate-200 min-h-[200px]">
+            <img src="assets/project-ecommerce.png" alt="E-Commerce Management Platform" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500 absolute inset-0">
+          </div>
+          <div class="w-full md:w-3/5 p-6 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="font-bold text-slate-900 text-base sm:text-lg">E-Commerce Management Web Application</h3>
+                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">2023</span>
+              </div>
+              <p class="text-slate-500 text-xs mb-4 leading-relaxed">
+                Delivered a full-stack e-commerce platform with user authentication, product listings, shopping cart, and order management built on a normalized MySQL database schema. Integrated PHP backend supporting concurrent transactions and admin management dashboard.
+              </p>
+              <div class="flex flex-wrap gap-1.5 mb-6">
+                <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#189078]/5 border border-[#189078]/10 text-[#189078]">HTML / CSS / JS</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#189078]/5 border border-[#189078]/10 text-[#189078]">PHP</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#189078]/5 border border-[#189078]/10 text-[#189078]">MySQL Database</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between border-t border-slate-100 pt-4">
+              <span class="text-xs font-semibold text-slate-400">Project Demo</span>
+              <a href="https://github.com/mandalsaran123" target="_blank" class="text-xs font-bold text-[#189078] hover:text-[#189078]/85 flex items-center gap-1 transition-colors">
+                View Project
+                <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 border-t border-slate-200" aria-labelledby="skills-title">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        
+        <!-- Text details -->
+        <div class="lg:col-span-5 space-y-5 animate-card">
+          <h2 id="skills-title" class="font-bold text-2xl sm:text-3xl text-slate-900 scroll-animate-fadeleft">
+            Technical <span class="text-[#189078]">Skills & Tools</span>
+          </h2>
+          <p class="text-slate-655 text-sm sm:text-base leading-relaxed">
+            My skill profile spans frontend framework scripting, relational database queries, version control, and digital asset rendering.
+          </p>
+          
+          <!-- Concept Badges -->
+          <div class="pt-2">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Core Engineering Concepts</h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 text-xs font-semibold bg-white border border-slate-200 rounded-lg text-slate-700 hover:border-[#189078] hover:text-[#189078] transition-colors duration-300">Data Structures</span>
+              <span class="px-3 py-1 text-xs font-semibold bg-white border border-slate-200 rounded-lg text-slate-700 hover:border-[#189078] hover:text-[#189078] transition-colors duration-300">Object-Oriented Programming (OOP)</span>
+              <span class="px-3 py-1 text-xs font-semibold bg-white border border-slate-200 rounded-lg text-slate-700 hover:border-[#189078] hover:text-[#189078] transition-colors duration-300">Software Development Lifecycle (SDLC)</span>
+              <span class="px-3 py-1 text-xs font-semibold bg-white border border-slate-200 rounded-lg text-slate-700 hover:border-[#189078] hover:text-[#189078] transition-colors duration-300">Git & Version Control</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Progress Bars & Lists -->
+        <div class="lg:col-span-7 bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 space-y-6 animate-card" id="skills-container">
+          
+          <!-- Category 1 -->
+          <div class="space-y-2">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center text-sm gap-1">
+              <span class="font-bold text-slate-800">Languages</span>
+              <span class="font-semibold text-[#189078]">Python, JavaScript (ES6+), Java, C, C++, PHP, SQL</span>
+            </div>
+            <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden border border-slate-200/60">
+              <div class="h-full bg-gradient-to-r from-[#189078] to-[#189078]/80 rounded-full progress-fill" style="width: 88%;"></div>
+            </div>
+          </div>
+
+          <!-- Category 2 -->
+          <div class="space-y-2">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center text-sm gap-1">
+              <span class="font-bold text-slate-800">Web Technologies</span>
+              <span class="font-semibold text-[#189078]">HTML5, CSS3, React, Node.js, Express, REST APIs, DOM</span>
+            </div>
+            <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden border border-slate-200/60">
+              <div class="h-full bg-gradient-to-r from-[#189078] to-[#189078]/80 rounded-full progress-fill" style="width: 90%;"></div>
+            </div>
+          </div>
+
+          <!-- Category 3 -->
+          <div class="space-y-2">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center text-sm gap-1">
+              <span class="font-bold text-slate-800">Databases</span>
+              <span class="font-semibold text-[#189078]">MongoDB, MySQL, DBMS (Normalization, Indexes)</span>
+            </div>
+            <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden border border-slate-200/60">
+              <div class="h-full bg-gradient-to-r from-[#189078] to-[#189078]/80 rounded-full progress-fill" style="width: 82%;"></div>
+            </div>
+          </div>
+
+          <!-- Category 4 -->
+          <div class="space-y-2">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center text-sm gap-1">
+              <span class="font-bold text-slate-800">Tools & Software</span>
+              <span class="font-semibold text-[#189078]">Adobe Photoshop, Microsoft Office Suite</span>
+            </div>
+            <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden border border-slate-200/60">
+              <div class="h-full bg-gradient-to-r from-[#189078] to-[#189078]/80 rounded-full progress-fill" style="width: 75%;"></div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Learning Section -->
+    <section id="learning" class="py-16 border-t border-slate-200" aria-labelledby="learning-title">
+      <div class="max-w-3xl space-y-4 mb-12 animate-card">
+        <h2 id="learning-title" class="font-bold text-2xl sm:text-3xl text-slate-900 scroll-animate-fadeup">
+          Academic & Practical <span class="text-[#189078]">Learning Roadmap</span>
+        </h2>
+        <p class="text-slate-655 text-sm sm:text-base leading-relaxed">
+          My timeline for ongoing engineering study, detailing completed technologies and aspiring architectures.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Learned Concepts -->
+        <div class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 space-y-6 animate-card hover:border-[#189078] hover:shadow-[0_10px_25px_-5px_rgba(24,144,120,0.06)] transition-all duration-350">
+          <h3 class="font-bold text-lg text-slate-900 border-b border-slate-100 pb-3 flex items-center gap-2.5">
+            <i class="fa-solid fa-circle-check text-emerald-500"></i>
+            Core Technical Foundation
+          </h3>
+          
+          <div class="space-y-4">
+            <div class="flex gap-3.5 items-start group">
+              <div class="w-8.5 h-8.5 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center text-emerald-500 flex-shrink-0 group-hover:bg-emerald-500 group-hover:text-white group-hover:border-emerald-500 transition-all duration-300">
+                <i class="fa-brands fa-html5 text-sm"></i>
+              </div>
+              <div>
+                <h4 class="text-slate-800 font-semibold text-sm sm:text-base">HTML5 & CSS3</h4>
+                <p class="text-slate-500 text-xs mt-1 leading-relaxed">Responsive grids, Flexbox, UI/UX accessibility standards, custom typography layouts, and CSS keyframe animations.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-3.5 items-start group">
+              <div class="w-8.5 h-8.5 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center text-emerald-500 flex-shrink-0 group-hover:bg-emerald-500 group-hover:text-white group-hover:border-emerald-500 transition-all duration-300">
+                <i class="fa-brands fa-js text-sm"></i>
+              </div>
+              <div>
+                <h4 class="text-slate-800 font-semibold text-sm sm:text-base">JavaScript & Advanced JS</h4>
+                <p class="text-slate-500 text-xs mt-1 leading-relaxed">ES6+ syntax details, DOM Manipulation methods, asynchronous APIs (fetch, Promises, async/await), and event delegation paradigms.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-3.5 items-start group">
+              <div class="w-8.5 h-8.5 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center text-emerald-500 flex-shrink-0 group-hover:bg-emerald-500 group-hover:text-white group-hover:border-emerald-500 transition-all duration-300">
+                <i class="fa-solid fa-cubes text-sm"></i>
+              </div>
+              <div>
+                <h4 class="text-slate-800 font-semibold text-sm sm:text-base">MERN Stack Frameworks</h4>
+                <p class="text-slate-500 text-xs mt-1 leading-relaxed">Robust full-stack platforms connecting MongoDB Atlas schemas, Express APIs, React single-page UI hooks, and Node.js backend runtimes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Aspiring Concepts -->
+        <div class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 space-y-6 animate-card hover:border-[#189078] hover:shadow-[0_10px_25px_-5px_rgba(24,144,120,0.06)] transition-all duration-350">
+          <h3 class="font-bold text-lg text-slate-900 border-b border-slate-100 pb-3 flex items-center gap-2.5">
+            <i class="fa-solid fa-compass text-[#189078]"></i>
+            Aspiring Roadmap Focus
+          </h3>
+
+          <div class="space-y-4">
+            <!-- TS -->
+            <div class="space-y-1.5">
+              <div class="flex justify-between items-center text-xs sm:text-sm">
+                <span class="font-semibold text-slate-800 flex items-center gap-2">
+                  <i class="fa-solid fa-code text-[10px] text-[#189078]"></i>
+                  TypeScript
+                </span>
+                <span class="font-bold text-[#189078]">55%</span>
+              </div>
+              <div class="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden border border-slate-200/60">
+                <div class="h-full bg-[#189078] rounded-full progress-fill" style="width: 55%;"></div>
+              </div>
+            </div>
+
+            <!-- PERN -->
+            <div class="space-y-1.5">
+              <div class="flex justify-between items-center text-xs sm:text-sm">
+                <span class="font-semibold text-slate-800 flex items-center gap-2">
+                  <i class="fa-solid fa-database text-[10px] text-[#189078]"></i>
+                  PERN Stack (PostgreSQL)
+                </span>
+                <span class="font-bold text-[#189078]">60%</span>
+              </div>
+              <div class="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden border border-slate-200/60">
+                <div class="h-full bg-[#189078] rounded-full progress-fill" style="width: 60%;"></div>
+              </div>
+            </div>
+
+            <!-- AI -->
+            <div class="space-y-1.5">
+              <div class="flex justify-between items-center text-xs sm:text-sm">
+                <span class="font-semibold text-slate-800 flex items-center gap-2">
+                  <i class="fa-solid fa-brain text-[10px] text-[#189078]"></i>
+                  AI Model Integration
+                </span>
+                <span class="font-bold text-[#189078]">40%</span>
+              </div>
+              <div class="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden border border-slate-200/60">
+                <div class="h-full bg-[#189078] rounded-full progress-fill" style="width: 40%;"></div>
+              </div>
+            </div>
+
+            <!-- System Design -->
+            <div class="space-y-1.5">
+              <div class="flex justify-between items-center text-xs sm:text-sm">
+                <span class="font-semibold text-slate-800 flex items-center gap-2">
+                  <i class="fa-solid fa-server text-[10px] text-[#189078]"></i>
+                  System Design & Scaling
+                </span>
+                <span class="font-bold text-[#189078]">30%</span>
+              </div>
+              <div class="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden border border-slate-200/60">
+                <div class="h-full bg-[#189078] rounded-full progress-fill" style="width: 30%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 border-t border-slate-200" aria-labelledby="contact-title">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        
+        <!-- Contact Info Column -->
+        <div class="lg:col-span-5 space-y-6 animate-card">
+          <div>
+            <h2 id="contact-title" class="font-bold text-2xl sm:text-3xl text-slate-900 mb-4 scroll-animate-faderight">
+              Get in <span class="text-[#189078]">Touch</span>
+            </h2>
+            <p class="text-slate-655 text-sm sm:text-base leading-relaxed">
+              I am interested in full-stack engineering roles. Feel free to reach out via phone, email, or LinkedIn.
+            </p>
+          </div>
+
+          <!-- Contact items (flat cards) -->
+          <div class="space-y-3.5">
+            <!-- Email -->
+            <div class="flex items-center gap-4 p-4 rounded-xl bg-white border border-slate-200 hover:-translate-y-1.5 hover:border-[#189078] hover:shadow-[0_10px_25px_-5px_rgba(24,144,120,0.06)] transition-all duration-350" id="contact-item-email">
+              <div class="w-10 h-10 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center text-[#189078] flex-shrink-0">
+                <i class="fa-solid fa-envelope text-sm"></i>
+              </div>
+              <div>
+                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Email Address</p>
+                <a href="mailto:mandalsaran123@gmail.com" class="text-slate-800 hover:text-[#189078] text-sm font-semibold transition-colors">mandalsaran123@gmail.com</a>
+              </div>
+            </div>
+
+            <!-- Phone -->
+            <div class="flex items-center gap-4 p-4 rounded-xl bg-white border border-slate-200 hover:-translate-y-1.5 hover:border-[#189078] hover:shadow-[0_10px_25px_-5px_rgba(24,144,120,0.06)] transition-all duration-350" id="contact-item-phone">
+              <div class="w-10 h-10 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center text-[#189078] flex-shrink-0">
+                <i class="fa-solid fa-phone text-sm"></i>
+              </div>
+              <div>
+                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Phone Call</p>
+                <a href="tel:+917635816673" class="text-slate-800 hover:text-[#189078] text-sm font-semibold transition-colors">+91 76358 16673</a>
+              </div>
+            </div>
+
+            <!-- Location -->
+            <div class="flex items-center gap-4 p-4 rounded-xl bg-white border border-slate-200 hover:-translate-y-1.5 hover:border-[#189078] hover:shadow-[0_10px_25px_-5px_rgba(24,144,120,0.06)] transition-all duration-350" id="contact-item-location">
+              <div class="w-10 h-10 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center text-[#189078] flex-shrink-0">
+                <i class="fa-solid fa-location-dot text-sm"></i>
+              </div>
+              <div>
+                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Location</p>
+                <span class="text-slate-855 text-sm font-semibold">Guwahati, Assam, India (781025)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Spoken Languages -->
+          <div>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2 font-display">Languages Spoken</h4>
+            <div class="flex flex-wrap gap-1.5 text-xs font-semibold">
+              <span class="px-2.5 py-1 bg-white border border-slate-200 rounded text-slate-700">English</span>
+              <span class="px-2.5 py-1 bg-white border border-slate-200 rounded text-slate-700">Assamese</span>
+              <span class="px-2.5 py-1 bg-white border border-slate-200 rounded text-slate-700">Bengali</span>
+              <span class="px-2.5 py-1 bg-white border border-slate-200 rounded text-slate-700">Hindi</span>
+            </div>
+          </div>
+
+          <!-- Social links -->
+          <div class="flex items-center gap-3 pt-2">
+            <a href="https://linkedin.com/in/saran-mandal-b70370304" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-white border border-slate-200 text-slate-600 hover:text-white hover:bg-[#189078] hover:border-[#189078] flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5" aria-label="LinkedIn Profile">
+              <i class="fa-brands fa-linkedin text-sm"></i>
+            </a>
+            <a href="https://github.com/Sksaran12" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-white border border-slate-200 text-slate-600 hover:text-white hover:bg-[#189078] hover:border-[#189078] flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5" aria-label="GitHub Profile">
+              <i class="fa-brands fa-github text-sm"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Contact Form Column -->
+        <div class="lg:col-span-7 animate-card" id="contact-form-container">
+          <form action="#" method="POST" class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 space-y-5 hover:shadow-[0_12px_28px_-5px_rgba(24,144,120,0.06)] transition-all duration-350" aria-label="Contact Form">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <!-- Name Input -->
+              <div class="space-y-2">
+                <label for="contact-name" class="text-xs font-bold text-slate-500">Your Name</label>
+                <input type="text" id="contact-name" name="name" required class="w-full bg-slate-50 border border-slate-200 focus:border-[#189078] focus:bg-white rounded-xl px-4 py-3 text-slate-800 placeholder-slate-400 focus:outline-none transition-all" placeholder="Your name">
+              </div>
+              <!-- Email Input -->
+              <div class="space-y-2">
+                <label for="contact-email" class="text-xs font-bold text-slate-500">Email Address</label>
+                <input type="email" id="contact-email" name="email" required class="w-full bg-slate-50 border border-slate-200 focus:border-[#189078] focus:bg-white rounded-xl px-4 py-3 text-slate-800 placeholder-slate-400 focus:outline-none transition-all" placeholder="email@example.com">
+              </div>
+            </div>
+            <!-- Message Input -->
+            <div class="space-y-2">
+              <label for="contact-message" class="text-xs font-bold text-slate-500">Message</label>
+              <textarea id="contact-message" name="message" rows="5" required class="w-full bg-slate-50 border border-slate-200 focus:border-[#189078] focus:bg-white rounded-xl px-4 py-3 text-slate-800 placeholder-slate-400 focus:outline-none transition-all resize-none" placeholder="Hello Saran, let's connect..."></textarea>
+            </div>
+            <!-- Submit Button -->
+            <button type="submit" class="w-full py-3.5 rounded-xl text-sm font-semibold bg-[#189078] hover:bg-[#189078]/90 text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0" id="contact-form-submit">
+              Send Message
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-slate-200 relative z-10" aria-label="Footer">
+    <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <!-- Brand -->
+      <a href="#" class="flex items-center gap-2 group" id="footer-brand">
+        <!-- Custom SVG Isometric Stack Icon (Footer) -->
+        <svg class="w-7 h-7 text-[#189078] transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5z" fill="rgba(24, 144, 120, 0.15)"></path>
+          <path d="M2 17l10 5 10-5"></path>
+          <path d="M2 12l10 5 10-5"></path>
+        </svg>
+        <span class="text-lg font-bold tracking-tight text-slate-900 transition-colors group-hover:text-[#189078]">
+          SM<span class="text-[#189078] font-medium">Portfolio</span>
+        </span>
+      </a>
+
+      <!-- Quick Nav Links -->
+      <div class="flex flex-wrap items-center justify-center gap-8">
+        <a href="#about" class="text-xs font-semibold text-slate-500 hover:text-[#189078] transition-colors duration-200" id="footer-link-about">About</a>
+        <a href="#education" class="text-xs font-semibold text-slate-500 hover:text-[#189078] transition-colors duration-200" id="footer-link-education">Education</a>
+        <a href="#projects" class="text-xs font-semibold text-slate-500 hover:text-[#189078] transition-colors duration-200" id="footer-link-projects">Projects</a>
+        <a href="#skills" class="text-xs font-semibold text-slate-500 hover:text-[#189078] transition-colors duration-200" id="footer-link-skills">Skills</a>
+        <a href="#learning" class="text-xs font-semibold text-slate-500 hover:text-[#189078] transition-colors duration-200" id="footer-link-learning">Learning</a>
+        <a href="#contact" class="text-xs font-semibold text-slate-500 hover:text-[#189078] transition-colors duration-200" id="footer-link-contact">Contact</a>
+      </div>
+
+      <!-- Copyright -->
+      <p class="text-xs text-slate-500" id="footer-copyright">
+        &copy; 2026 Saran Mandal. All rights reserved.
+      </p>
+
+    </div>
+  </footer>
+
+</body>
+</html>

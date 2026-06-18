@@ -1,0 +1,12 @@
+# Dependencies
+node_modules/
+
+# IDE and System Files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Agent/AI Configs (Optional but recommended to keep repo clean)
+.gemini/
+.system_generated/
